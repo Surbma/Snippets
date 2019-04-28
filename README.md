@@ -2,6 +2,10 @@
 
 ## Changelog
 
-** 1.0 **
+**1.1**
 
-- Added all cuurent files to the repo.
+- Minor fixes in README.
+
+**1.0**
+
+- Added all current files to the repo.
