@@ -1,0 +1,3 @@
+find public -type f -exec chmod 644 {} \;
+
+// Ez konkrétan a public nevű mappában fogja ezt megcsinálni.

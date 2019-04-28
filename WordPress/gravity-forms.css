@@ -1,0 +1,39 @@
+/* Display fields in 2 or 3 columns. */
+
+gf_left_half
+gf_right_half
+gf_left_third
+gf_middle_third
+gf_right_third
+
+/* This turns a multiple choice/checkbox list into an equally-spaced 2-5 column format. This only applies to multiple choice/checkbox lists and work with any of the form label position settings. */
+
+gf_list_2col
+gf_list_3col
+gf_list_4col
+gf_list_5col
+
+/* This turns a multiple choice/checkbox list into an inline horizontal list (not evenly spaced columns). This only applies to multiple choice/checkbox lists and work with any of the form label position settings. */
+
+gf_list_inline
+
+/* This applies a 25-150px height value all multiple choice/checkbox items in that list. This can be useful to avoid "hanging floats" caused by list items of unequal height. This only applies to multiple choice/checkbox lists and work with any of the form label position settings. */
+
+gf_list_height_25
+gf_list_height_50
+gf_list_height_75
+gf_list_height_100
+gf_list_height_125
+gf_list_height_150
+
+/* This converts a section break field into a box with a fixed height that will automatically show a scroll bar if there’s a large amount of text. This is useful if you’re wanting to show large amounts of content to the user, but don’t want to have to link to it or make the form very long to show it (Terms of Service Agreements, etc). This class only works on section breaks and works with any of the form label position settings. */
+
+gf_scroll_text
+
+/* This hides the am/pm selector in the time field- this only hides the field on the form, not in the form entry table. This works with any of the form label position settings. */
+
+gf_hide_ampm
+
+/* This hides the characters left counter beneath paragraph text fields when using the maximum characters option. This works with any of the form label position settings. */
+
+gf_hide_charleft
