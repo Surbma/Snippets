@@ -1,4 +1,4 @@
---path="apps/surbmacom/public/"
+# --path="apps/surbmacom/public/"
 
 wp --path="apps/surbmacom/public/" cache flush
 wp --path="apps/surbmacom/public/" super-admin list

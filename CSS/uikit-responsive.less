@@ -1,0 +1,46 @@
+/*
+// Breakpoints
+// ========================================================================
+
+// Phone Portrait:   Galaxy (360x640), iPhone 6 (375x667), iPhone 6+ (414x736)
+// Phone Landscape:  Galaxy (640x360), iPhone 6 (667x375), iPhone 6+ (736x414)
+// Tablet Portrait:  iPad (768x1024), Galaxy Tab (800x1280),
+// Tablet Landscape: iPad (1024x768), iPad Pro (1024x1366),
+// Desktop:          Galaxy Tab (1280x800), iPad Pro (1366x1024)
+*/
+
+$breakpoint-small:                              640px !default;  // Phone landscape
+$breakpoint-medium:                             960px !default;  // Tablet Landscape
+$breakpoint-large:                              1200px !default; // Desktop
+$breakpoint-xlarge:                             1600px !default; // Large Screens
+
+$breakpoint-xsmall-max:                         ($breakpoint-small - 1) !default;
+$breakpoint-small-max:                          ($breakpoint-medium - 1) !default;
+$breakpoint-medium-max:                         ($breakpoint-large - 1) !default;
+$breakpoint-large-max:                          ($breakpoint-xlarge - 1) !default;
+
+// Mobile First
+@media (min-width: $breakpoint-small) {
+}
+
+@media (min-width: $breakpoint-medium) {
+}
+
+@media (min-width: $breakpoint-large) {
+}
+
+@media (min-width: $breakpoint-xlarge) {
+}
+
+// Desktop First
+@media (max-width: $breakpoint-xsmall-max) {
+}
+
+@media (max-width: $breakpoint-small-max) {
+}
+
+@media (max-width: $breakpoint-medium-max) {
+}
+
+@media (max-width: $breakpoint-large-max) {
+}
