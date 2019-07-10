@@ -1,6 +1,6 @@
 <?php
 
-function surbma_beacon_admin_footer_function() {
+function surbma_beacon_function() {
 	$current_user = wp_get_current_user();
 	$username = $current_user->user_login;
 	$email = $current_user->user_email;
@@ -8,64 +8,21 @@ function surbma_beacon_admin_footer_function() {
 	$lastname = $current_user->user_lastname;
 	$displayname = $current_user->display_name;
 	$userid = $current_user->ID;
-	$locale = get_locale();
 
-	if ( !is_super_admin() ) {
+	// Show Beacon only for selected users
+	// if( current_user_can( 'unfiltered_html' ) || $userid == 3 || $userid == 4 || $userid == 6 ) {
 ?>
-<script>!function(e,o,n){window.HSCW=o,window.HS=n,n.beacon=n.beacon||{};var t=n.beacon;t.userConfig={},t.readyQueue=[],t.config=function(e){this.userConfig=e},t.ready=function(e){this.readyQueue.push(e)},o.config={docs:{enabled:!1,baseUrl:""},contact:{enabled:!0,formId:"72827e54-6777-11e5-8846-0e599dc12a51"}};var r=e.getElementsByTagName("script")[0],c=e.createElement("script");c.type="text/javascript",c.async=!0,c.src="https://djtflbt20bdde.cloudfront.net/",r.parentNode.insertBefore(c,r)}(document,window.HSCW||{},window.HS||{});</script>
-
+<script type="text/javascript">!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});</script>
 <script type="text/javascript">
-HS.beacon.config({
-	<?php if ( $locale == 'hu_HU' ) { ?>
-	translation: {
-		searchLabel: 'Keresés a tudásbázisban...',
-		searchErrorLabel: 'Időtúllépési hiba a keresésben. Ellenőrizze az internet kapcsolatot és próbálja meg újra!',
-		noResultsLabel: 'Nincs találat a következő kifejezésre:',
-		contactLabel: 'Üzenet írása az ügyfélszolgálatra',
-		attachFileLabel: 'Fájl csatolása',
-		attachFileError: 'A maximális fájlméret 10 MB',
-		nameLabel: 'Név',
-		nameError: 'A név kitöltése kötelező',
-		emailLabel: 'Email',
-		emailError: 'Nem megfelelő email',
-		topicLabel: 'Téma választása',
-		topicError: 'A téma kiválasztása kötelező',
-		subjectLabel: 'Tárgy',
-		subjectError: 'A tárgy kitöltése kötelező',
-		messageLabel: 'Miben segíthetünk?',
-		messageError: 'Az üzenet kitöltése kötelező',
-		sendLabel: 'Küldés',
-		contactSuccessLabel: 'Köszönjük az üzenetet!',
-		contactSuccessDescription: 'Hamarosan válaszolunk.'
-	},
-	<?php } ?>
-	// topics: [
-	//   { val: '.kérdés', label: 'Általános kérdés' },
-	//   { val: '.ajánlatkérés', label: 'Hire for work' },
-	//   { val: 'surbma-plugin-help', label: 'Need help with one of your plugin' },
-	//   { val: 'surbma-plugin-bug', label: 'I think I found a bug in one of your plugin'}
-	// ],
-	<?php if ( $locale == 'hu_HU' ) { ?>
-	instructions: 'Prémium WordPress ügyfélszolgálat',
-	<?php } ?>
-	<?php if ( $locale != 'hu_HU' ) { ?>
-	instructions: 'Premium WordPress Support',
-	<?php } ?>
-	poweredBy: false
-});
-
-HS.beacon.ready(function() {
-	HS.beacon.identify({
-		<?php if ( $lastname != '' && $firstname != '' ) { ?>
-		name: '<?php echo $lastname .' '. $firstname; ?>',
-		<?php } ?>
-		email: '<?php echo $email; ?>',
-		Username: '<?php echo $username; ?>',
-		UserID: '<?php echo $userid; ?>',
-		Locale: '<?php echo $locale; ?>'
-	});
-});
+window.Beacon('init', 'bb911ee0-b22e-4bfb-adcd-7fbb2b3d58f2') // PRO Előfizetők
+window.Beacon('identify', {
+	email: <?php echo json_encode( $email ); ?>,
+	Username: <?php echo json_encode( $username ); ?>,
+	UserID: <?php echo json_encode( $userid ); ?>,
+	signature: '<?php echo hash_hmac( "sha256", $email, "7aLkp3/9Dorsd738Dps/1saTiCEjJSx2fPKjaNgwgto=" ); ?>'
+})
 </script>
-<?php }
+<?php
+	// }
 }
-add_action( 'admin_footer', 'surbma_beacon_admin_footer_function' );
+add_action( 'admin_footer', 'surbma_beacon_function' );
