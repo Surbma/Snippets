@@ -1,0 +1,8 @@
+// A Redirection bővítmény leírása a regex-ekről:
+https://redirection.me/support/redirect-regular-expressions/
+
+// Minden kérés átirányítása
+^/.*
+
+// Minden kérés átirányítása úgy, hogy a cél url átveszi az útvonalat. Ehhez ott a $1 változót kell betenni az url-be.
+^/(.*)

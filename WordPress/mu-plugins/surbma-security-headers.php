@@ -25,6 +25,7 @@ function surbma_security_headers_insert() {
 	send_frame_options_header();
 
 	// Referrer Policy
+	// https://scotthelme.co.uk/a-new-security-header-referrer-policy/
 	//
 	// Possible values:
 	// no-referrer
@@ -42,6 +43,31 @@ function surbma_security_headers_insert() {
 	header( "Content-Security-Policy: default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:;" );
 	// For testing
 	// header( "Content-Security-Policy-Report-Only: default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:;" );
+
+	// Feature Policy
+	// https://scotthelme.co.uk/a-new-security-header-feature-policy/
+	//
+	// Possible features:
+	// geolocation
+	// midi
+	// notifications
+	// push
+	// sync-xhr
+	// microphone
+	// camera
+	// magnetometer
+	// gyroscope
+	// speaker
+	// vibrate
+	// fullscreen
+	// payment
+	//
+	// Possible options:
+	// *
+	// 'self'
+	// 'none'
+	// <origin(s)>
+	header( "Feature-Policy: midi 'none';" );
 }
 add_action( 'send_headers', 'surbma_security_headers_insert' );
 // admin section doesn't have a send_headers action so we abuse init

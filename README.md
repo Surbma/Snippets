@@ -2,6 +2,23 @@
 
 ## Changelog
 
+**4.0**
+
+SSH
+
+- Leírás pontosítása.
+
+WordPress
+
+- Néhány fájl átnevezése.
+- Coming Soon Pro kód üres oldalhoz.
+- Widgetek létrehozásához példa kódok hozzáadása.
+- Security Headers kiegészítése leírásokkal és új header-rel.
+
+Egyéb
+
+- Új kódok Regex átirányításhoz.
+
 **3.0**
 
 SSH
