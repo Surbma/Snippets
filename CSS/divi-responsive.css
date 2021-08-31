@@ -1,0 +1,47 @@
+/* Main widths */
+
+@media only screen and ( min-width: 981px ) and ( max-width: 1100px ) {
+
+}
+
+@media only screen and ( max-width: 980px ) {
+
+}
+
+@media only screen and ( max-width: 767px ) {
+
+}
+
+@media only screen and ( max-width: 479px ) {
+
+}
+
+/* Other widths */
+
+@media only screen and ( min-width: 1405px ) {
+
+}
+
+@media only screen and ( min-width: 981px ) {
+
+}
+
+@media only screen and ( min-width: 1200px ) {
+
+}
+
+@media only screen and ( min-width: 1100px ) {
+
+}
+
+@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
+
+}
+
+@media only screen and ( min-width: 981px ) and ( max-width: 1405px) {
+
+}
+
+@media only screen and ( min-width: 768px ) and ( max-width: 980px ) {
+
+}

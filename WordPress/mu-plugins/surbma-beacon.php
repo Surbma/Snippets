@@ -1,6 +1,6 @@
 <?php
 
-function surbma_beacon_function() {
+add_action( 'admin_footer', function() {
 	$current_user = wp_get_current_user();
 	$username = $current_user->user_login;
 	$email = $current_user->user_email;
@@ -16,13 +16,12 @@ function surbma_beacon_function() {
 <script type="text/javascript">
 window.Beacon('init', 'bb911ee0-b22e-4bfb-adcd-7fbb2b3d58f2') // PRO Előfizetők
 window.Beacon('identify', {
-	email: <?php echo json_encode( $email ); ?>,
-	Username: <?php echo json_encode( $username ); ?>,
-	UserID: <?php echo json_encode( $userid ); ?>,
-	signature: '<?php echo hash_hmac( "sha256", $email, "7aLkp3/9Dorsd738Dps/1saTiCEjJSx2fPKjaNgwgto=" ); ?>'
+	email: '<?php echo esc_js( $email ); ?>',
+	Username: '<?php echo esc_js( $username ); ?>',
+	UserID: '<?php echo esc_js( $userid ); ?>',
+	signature: '<?php echo esc_js( hash_hmac( 'sha256', $email, '7aLkp3/9Dorsd738Dps/1saTiCEjJSx2fPKjaNgwgto=' ) ); ?>'
 })
 </script>
 <?php
 	// }
-}
-add_action( 'admin_footer', 'surbma_beacon_function' );
+} );

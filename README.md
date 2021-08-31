@@ -2,6 +2,44 @@
 
 ## Changelog
 
+**5.0**
+
+CSS
+
+- Divi reszponzív stílusmeghatározások átkerült egy külön fájlba.
+
+Egyéb
+
+- Speciális karakterek.
+
+SSH
+
+- Pressjitsu fájl törlése, mert már nincs ott installáció.
+
+WP-CLI
+
+- Adatbázis import hozzáadása.
+
+WordPress
+
+- custom-functions.php template hozzáadása.
+- custom-post-type.php template hozzáadása.
+- Alap functions.php hozzáadása.
+- Alap Genesis függvények hozzáadása: genesis.php
+
+MU plugins
+
+- surbma-remove-ms-delete-site-submenu.php átnevezve: pwp-remove-ms-delete-site-submenu.php
+- surbma-beacon.php javításaok, kód optimalizálása.
+- surbma-fix-subsite-ssl.php kód módosítása.
+- shortcodes.php kódok egyszerűsítése.
+- wp-config.php kiegészítése néhány további meghatározással.
+- ÚJ - surbma-billingo-pro.php
+- ÚJ - surbma-disable-widgets-block-editor.php
+- ÚJ - surbma-new-site-force-ssl.php
+- ÚJ - surbma-new-site-noindex.php
+- ÚJ - wp-views.php
+
 **4.0**
 
 SSH
