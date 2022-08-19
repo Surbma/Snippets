@@ -2,6 +2,49 @@
 
 ## Changelog
 
+**6.0**
+
+MU plugins
+
+surbma-security-headers.php
+- Kapott plugin header-t, így a WP admin felületen is szépen jelenik meg a MU bővítmény listában.
+- A WP függvények helyettesítése a normál header függvénnyel.
+- Minden header-höz link és rövid leírás hozzáadása.
+- A Feature-Policy helyett a Permissions-Policy használata.
+- A Content-Security-Policy direktíva a végére került, mert az idővel talán helyettesítheti az összes többi header-t.
+
+surbma-hide-plugins.php
+- Átalakítás anoním függvényre.
+
+surbma-hide-gpl-times.php
+- Új MU bővítmény hozzáadása, amivel a GPL bővítményt tudom elrejteni minden felhasználó elől, kivéve a premiumwp nevű felhasználót.
+
+surbma-enable-mime-types.php
+- Átalakítás anoním függvényre.
+
+surbma-custom-translations.php
+- Átalakítás anoním függvényre.
+
+surbma-beacon.php
+- Új Beacon azonosítók megadása.
+
+.htaccess
+
+- Külön mappát kapott.
+- A 6g-firewall.txt át lett nevezve firewall.txt-re, mert mindig frissítve lesz benne a Perishable Press által kidolgozott firewall.
+- A firewall.txt fájlban felül is lett írva a legújabb 7G firewall-lal.
+
+SSH
+
+woocommerce.sh
+- Új utasítás hozzáadása, amivel a teljes Multisite hálózatban lefrissíthető az összes aloldal.
+
+file-management.sh
+- Új utasítások hozzáadása, amivel a fájlokat és mappákat lehet kezelni a szerveren.
+
+domain-info.sh
+- Az infó lekérés módosítása, hogy a protokoll is szerepeljen a lekérésben.
+
 **5.0**
 
 CSS

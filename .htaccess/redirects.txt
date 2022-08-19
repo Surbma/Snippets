@@ -1,0 +1,16 @@
+# BEGIN REDIRECTS
+RewriteEngine on
+
+# Redirect and keep all path
+RewriteCond %{HTTP_HOST} ^domain-one.com$
+RewriteRule ^(.*)$ https://domain-two.com$1 [R=301,L]
+
+# Redirect only, when path matches
+RewriteCond %{HTTP_HOST} ^domain-one.com$
+RewriteRule ^path-one/$ https://domain-two.com/path-two/ [R=301,L]
+
+# Redirect www and non-www version of domain to another domain's main page
+RewriteCond %{HTTP_HOST} ^domain-one.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www.domain-one.com$
+RewriteRule ^(.*)$ https://domain-two.com [R=301,L]
+# END REDIRECTS

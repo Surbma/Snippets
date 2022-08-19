@@ -5,7 +5,7 @@
  *
  * @link http://codex.wordpress.org/Plugin_API/Filter_Reference/gettext
  */
-function surbma_custom_strings( $translated_text, $text, $domain ) {
+add_filter( 'gettext', function( $translated_text, $text, $domain ) {
 	switch ( $translated_text ) {
 		case 'Érdekelhet még&hellip;' :
 			$translated_text = 'Érdekelheti még&hellip;';
@@ -39,5 +39,4 @@ function surbma_custom_strings( $translated_text, $text, $domain ) {
 			break;
 	}
 	return $translated_text;
-}
-add_filter( 'gettext', 'surbma_custom_strings', 20, 3 );
+}, 20, 3 );

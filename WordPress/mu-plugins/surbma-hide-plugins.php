@@ -10,7 +10,7 @@ Author URI: https://surbma.com/
 License: GPL2
 */
 
-function pwp_control_hide_plugins( $plugins ) {
+add_filter( 'all_plugins', function( $plugins ) {
 	if( is_plugin_active( 'worker/init.php' ) ) {
 		unset( $plugins[ 'worker/init.php' ] );
 	}
@@ -27,5 +27,4 @@ function pwp_control_hide_plugins( $plugins ) {
 		unset( $plugins[ 'wp-smush-pro/wp-smush.php' ] );
 	}
 	return $plugins;
-}
-add_filter( 'all_plugins', 'pwp_control_hide_plugins' );
+} );
