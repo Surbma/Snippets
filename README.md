@@ -2,6 +2,14 @@
 
 ## Changelog
 
+**7.1**
+
+MU plugins
+
+surbma-define-disallow-file-mods.php
+- A hook módosítása, hogy már meg legyen a user object.
+- A feltétel javítása, hogy pontosabb legyen a meghatározás.
+
 **7.0**
 
 MU plugins
