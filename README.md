@@ -2,6 +2,19 @@
 
 ## Changelog
 
+**7.0**
+
+MU plugins
+
+surbma-disable-rss-feed.php
+- A WP feed kikapcsolása.
+
+surbma-dgv-plugin-modifications.php
+- A tesóm Vimeo-s bővítményéhez egy módosítás, hogy a lista oldalon ne a shortcode-ot írja ki, hanem a linket.
+
+surbma-define-disallow-file-mods.php
+- Ez egy kiegészítés a pwp-config kódokhoz, hogy a premiumwp felhasználónál engedélyezze a bővítmények telepítését, frissítését.
+
 **6.0**
 
 MU plugins
