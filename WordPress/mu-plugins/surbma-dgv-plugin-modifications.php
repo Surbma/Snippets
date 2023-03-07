@@ -4,13 +4,17 @@
 
 add_action( 'admin_head', function() {
 	global $pagenow;
-	if ( ( $pagenow == 'upload.php' ) && ( $_GET['page'] == 'dgv-library' ) ) {
+	if ( ( ( $pagenow == 'upload.php' ) || ( $pagenow == 'admin.php' ) ) && ( $_GET['page'] == 'dgv-library' ) ) {
 		ob_start();
 		?>
 <style>
-	code.embed-code, .dgv-copy-embed-code {display: none;}
-	.embed-link-wrapper span.dashicons {cursor: pointer;}
-	.embed-link-wrapper span.dashicons:hover {color: #135e96;}
+	table.videos #size, table.videos #uploaded_at {width: 100px;}
+	table.videos th, table.videos td {vertical-align: middle;}
+	code.embed-code, .dgv-copy-embed-code {display: none !important;}
+	code.embed-link {word-break: break-all;}
+	.column-embed span.dashicons {cursor: pointer;}
+	.column-embed span.dashicons:hover {color: #135e96;}
+	.copy-alert {background: #000;color: #fff; padding: 15px;position: absolute;bottom: 15px;right: 15px;opacity: 1;transition: opacity 2s;}
 </style>
 		<?php
 		$style = ob_get_contents();
@@ -21,52 +25,56 @@ add_action( 'admin_head', function() {
 
 add_action( 'admin_footer', function() {
 	global $pagenow;
-	if ( ( $pagenow == 'upload.php' ) && ( $_GET['page'] == 'dgv-library' ) ) {
+	if ( ( ( $pagenow == 'upload.php' ) || ( $pagenow == 'admin.php' ) ) && ( $_GET['page'] == 'dgv-library' ) ) {
 		ob_start();
 		?>
 <script type="text/javascript">
 jQuery(document).ready(function($){
-	// Get the Vimeo ID from the shortcode
-	const container = document.getElementsByClassName('embed-code');
-	const regex = /\[dgv_vimeo_video id="(\d+)"\]/;
+	const tableRows = document.querySelectorAll('#the-list tr');
 
-	for (let i = 0; i < container.length; i++) {
-		const shortcode = container[i].innerHTML;
-		const matches = shortcode.match(regex);
+	tableRows.forEach(row => {
+		// Get the Vimeo URL from the link
+		const vimeoLink = row.querySelector('.column-title .vimeo a');
+		const vimeoUrl = vimeoLink.href;
 
-		if (matches) {
-			const vimeoId = matches[1];
-			console.log(vimeoId);
+		const embedCode = document.createElement('code');
+		embedCode.classList.add('embed-link');
+		embedCode.textContent = vimeoUrl;
 
-			// Create a new <code> element with the Vimeo video ID
-			const codeElem = document.createElement('code');
-			codeElem.classList.add('embed-link');
-			codeElem.innerHTML = `https://vimeo.com/<span class="embed-vimeo-id">${vimeoId}</span>`;
+		const embedLink = document.createElement('span');
+		embedLink.classList.add('dashicons', 'dashicons-admin-links');
+		// embedLink.textContent = 'Copy';
 
-			// Create a new <button> element for copying the code
-			const copyButton = document.createElement('span');
-			// copyButton.innerText = 'Copy';
-			copyButton.classList.add('dashicons', 'dashicons-admin-links');
-			copyButton.addEventListener('click', () => {
-				// Copy the <code> element's text content to the clipboard
-				const range = document.createRange();
-				range.selectNode(codeElem);
-				window.getSelection().removeAllRanges();
-				window.getSelection().addRange(range);
-				document.execCommand('copy');
-				window.getSelection().removeAllRanges();
-			});
+		embedLink.addEventListener('click', () => {
+			// Create a temporary input element and set its value to the embed code
+			const tempInput = document.createElement('input');
+			tempInput.value = embedCode.textContent;
+			document.body.appendChild(tempInput);
 
-			// Create a new <div> element to hold the <code> and <button> elements
-			const wrapperElem = document.createElement('div');
-			wrapperElem.classList.add('embed-link-wrapper');
-			wrapperElem.appendChild(codeElem);
-			wrapperElem.appendChild(copyButton);
+			// Select the input element and copy the text to the clipboard
+			tempInput.select();
+			document.execCommand('copy');
 
-			// Insert the wrapper element after the current element in the DOM
-			container[i].parentNode.insertBefore(wrapperElem, container[i].nextSibling);
-		}
-	}
+			// Remove the temporary input element
+			document.body.removeChild(tempInput);
+
+			// Show a message to the user
+			const alert = document.createElement('div');
+			alert.textContent = 'Vimeo link a vágólapra másolva.';
+			alert.classList.add('copy-alert');
+			document.body.appendChild(alert);
+			setTimeout(() => {
+				alert.style.opacity = 0;
+				setTimeout(() => {
+					alert.remove();
+				}, 2000);
+			}, 2000);
+		});
+
+		const embedContainer = row.querySelector('.column-embed');
+		embedContainer.appendChild(embedCode);
+		embedContainer.appendChild(embedLink);
+	});
 
 	$('.embed-code').hide();
 	$('.dgv-copy-embed-code').hide();

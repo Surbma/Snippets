@@ -2,6 +2,15 @@
 
 ## Changelog
 
+**7.2**
+
+MU plugins
+
+surbma-define-disallow-file-mods.php
+- A feltételek kibővítése, hogy minden szükséges oldalon lefusson a kód.
+- Táblázat megjelenítésének igazítása.
+- Ideiglenesen megjelenő alert hozzáadása.
+
 **7.1**
 
 MU plugins
